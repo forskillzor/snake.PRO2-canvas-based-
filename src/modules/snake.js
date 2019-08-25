@@ -74,12 +74,13 @@ export class Snake{
 	}
 
 	newFruit(){
-		let x = parseInt(Math.random()*39)
-		let y = parseInt(Math.random()*39)
 
-		if(this.matrix.getCell(x, y).content == 'snake'){
-			this.newFruit()
+		let {x,y} = generator()
+
+		while (this.matrix.getCell(x, y).content == 'snake'){
+			let {x,y} = generator()
 		}
+
 		this.matrix.setCell(x, y, 'fruit')
 
 	}
@@ -101,5 +102,12 @@ export class Snake{
 			this.newFruit()
 		}
 		this.changeMove()
+	}
+}
+
+function generator(){
+	return {
+		x: parseInt(Math.random()*39),
+		y: parseInt(Math.random()*39)
 	}
 }
