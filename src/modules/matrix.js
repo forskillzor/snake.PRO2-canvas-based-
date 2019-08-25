@@ -40,7 +40,8 @@ export class Matrix{
 
 		let num = this._calcNum(x, y)
 		this.cells[num].content = val
-		//this.elem.children[num].classList.add(val)
+		this.cells[num].render(this.ctx)
+
 	}
 
 	_calcNum(x, y){

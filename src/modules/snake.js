@@ -18,7 +18,7 @@ export class Snake{
 		for (let i = 0; i < this.body.length; i++){
 			this.matrix.setCell(this.body[i][0], this.body[i][1], 'snake')
 		}
-		this.matrix.render()
+		//this.matrix.render()
 	}
 
 	hide(){
@@ -68,13 +68,14 @@ export class Snake{
 		this.closer()
 		this.body.push([this.x, this.y])
 		const [x,y] = this.body.shift()
-		this.matrix.getCell(x,y).content = 'empty'
+		this.matrix.setCell(x, y, 'empty')
 		this.eat()
 		this.show()
 	}
 
 	newFruit(){
 		this.matrix.setCell(parseInt(Math.random()*39),parseInt(Math.random()*39),'fruit')
+
 	}
 
 	closer(){
