@@ -11,6 +11,7 @@ export class Matrix{
 	}
 
 	create(){
+
 		for (let y = 0; y < 800; y+=20){
 			for(let x = 0; x < 800; x+=20){
 				this.cells.push(new Cell(x, y, this.cellSize, this.cellSize))
@@ -19,6 +20,7 @@ export class Matrix{
 	}
 
 	render(){
+
 		for (let i = 0; i < this.cells.length; i++){
 			this.cells[i].render(this.ctx)
 		}
@@ -48,7 +50,9 @@ export class Matrix{
 
 		return y*40 + x //
 	}
+	
 	select(x,y){
+
 		this.setCell(x, y, 'snake')
 		this.cells[this._calcNum(x,y)].render(this.ctx)
 	}

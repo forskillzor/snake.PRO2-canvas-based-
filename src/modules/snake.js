@@ -18,7 +18,6 @@ export class Snake{
 		for (let i = 0; i < this.body.length; i++){
 			this.matrix.setCell(this.body[i][0], this.body[i][1], 'snake')
 		}
-		//this.matrix.render()
 	}
 
 	hide(){
@@ -65,34 +64,43 @@ export class Snake{
 				}
 				break;
 		}
-		this.closer()
+
+		this.checkForClosed()
+		this.stepForward()
+		this.checkForFruit()
+		this.show()
+	}
+
+	stepForward(){
+
 		this.body.push([this.x, this.y])
 		const [x,y] = this.body.shift()
 		this.matrix.setCell(x, y, 'empty')
-		this.eat()
-		this.show()
 	}
 
 	newFruit(){
 
 		let {x,y} = generator()
 
-		while (this.matrix.getCell(x, y).content == 'snake'){
-			let {x,y} = generator()
-		}
+		if(this.matrix.getCell(x, y).content == 'snake'){
+			console.log('SNAKE!!', this.matrix.getCell(x, y).content)
+			this.newFruit()
 
+		}
 		this.matrix.setCell(x, y, 'fruit')
+		
+		return
 
 	}
 
-	closer(){
+	checkForClosed(){
 		
 		if(this.matrix.getCell(this.x, this.y).content == 'snake'){
 			this.isClosed = true
 		}
 	}
 
-	eat(){
+	checkForFruit(){
 
 		if(this.matrix.getCell(this.x, this.y).content == 'fruit'){
 			console.log("om-nom-nom")
