@@ -19,6 +19,8 @@ export class Cell{
 			case 'snake':
 				ctx.fillStyle = 'green'; 
 				ctx.fillRect(this.x, this.y, this.m, this.n);
+				ctx.strokeStyle = '#d2d2d2';
+				ctx.strokeRect(this.x, this.y, this.m, this.n); 
 				break;
 			case 'fruit':
 				ctx.fillStyle = 'red'; 

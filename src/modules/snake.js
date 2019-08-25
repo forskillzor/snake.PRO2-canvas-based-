@@ -74,8 +74,12 @@ export class Snake{
 	}
 
 	newFruit(){
-		this.matrix.setCell(parseInt(Math.random()*39),parseInt(Math.random()*39),'fruit')
+		let x = parseInt(Math.random()*39)
+		let y = parseInt(Math.random()*39)
 
+		if(this.matrix.getCell(x, y).content != 'snake'){
+			this.matrix.setCell(x, y, 'fruit')
+		}
 	}
 
 	closer(){
