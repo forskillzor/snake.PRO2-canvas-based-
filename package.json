@@ -1,0 +1,35 @@
+{
+  "name": "snake.pro",
+  "version": "1.0.0",
+  "description": "just simple snake game",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "dev:watch": "webpack --mode development --watch",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "author": "Orlov Sergey",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forskillzor/Snake.PRO.git"
+  },
+  "keywords": [
+    "snake",
+    "simple",
+    "game",
+    "JS"
+  ],
+  "bugs": {
+    "url": "https://github.com/forskillzor/Snake.PRO/issues"
+  },
+  "homepage": "https://github.com/forskillzor/Snake.PRO#readme",
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.8.0"
+  }
+}

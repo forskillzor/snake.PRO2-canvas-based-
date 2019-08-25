@@ -1,0 +1,67 @@
+.app{
+	background-color: #AD7FA8FF;
+	padding-bottom:50px;
+}
+.game-menu{
+	display: flex;
+	padding:10px;
+	padding-left: 50px;
+	border-radius: 10px;
+	margin: 5px auto;
+	width:400px;
+	position: relative;
+	background-color: #5C3566FF;
+	color:#fff;
+	font-size:20px;
+	font-family: sans-serif;
+}
+.game{
+	/*width:400px;
+	height:400px;
+	/*border: 1px solid #d2d2d2;*/
+	padding: none;
+	margin: none;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+.title{
+	font-weight: 700;
+}
+.cell{
+	width:20px;
+	height:20px;
+	box-sizing: border-box;
+	border:1px solid #d2d2d2;
+	float:left;
+}
+.fruit{
+	background-color: red;
+}
+.snake{
+	background-color: green;
+}
+.game-wrapper{
+	box-sizing: border-box;
+	margin: 0px auto;
+	width:800px;
+	height: 800px;
+	position: relative;
+	background-color: #f9f9f9;
+}
+.new-game{
+	top: 350px;
+	left:300px;
+	position: absolute;
+	background-color: #F57900FF;
+	color:#A40000FF;
+	font-family: sans-serif;
+	font-size:30px;
+	border: none;
+	border-radius: 10px;
+	padding: 20px 20px;
+	cursor:pointer;
+	outline:none;
+}
+.hide{
+	display: none;
+}
