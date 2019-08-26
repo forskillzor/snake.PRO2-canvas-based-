@@ -13,11 +13,9 @@ export class Game{
 		this.score = 0
 		this.lifes = 3
 		this.matrix = new Matrix(this.$canvas);
-		console.log('crate game')
 		this.matrix.render()
 		
 		this.snake = new Snake(this.matrix, 0,5)
-		//this.matrix.setCell(4, 4,'fruit')
 		this.isRunning = false
 
 		this.$newButton.addEventListener('click', this.newGame.bind(this))
@@ -35,7 +33,6 @@ export class Game{
 	gameOver(){
 
 		clearInterval(this.snake.interval)
-		//clearInterval(this.gameInterval)
 		this.isRunning = false
 		alert('GAME OVER')
 		this.$newButton.classList.remove('hide')
@@ -60,8 +57,6 @@ export class Game{
 		const self = this
 	
 		window.addEventListener('keydown', function(event){
-
-			//event.preventDefault()
 
 			if(self.isRunning){
 				switch (event.key) {

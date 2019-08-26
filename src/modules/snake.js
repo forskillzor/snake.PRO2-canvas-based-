@@ -1,16 +1,17 @@
 export class Snake{
 
 	constructor(matrix, x, y){
+
 		this.matrix = matrix
 		this.body = []
 		this.x = x
 		this.y = y
-		this.body.push([this.x, this.y])
 		this.direction = 'right'
 		this.speed = 100
 		this.interval = false
 		this.isClosed = false
 
+		this.body.push([this.x, this.y])
 	}
 
 	show(){
@@ -36,8 +37,6 @@ export class Snake{
 
 	move(direction){
 
-		const currentCell = this.matrix._calcNum(this.x, this.y)
-		this.matrix.clearCell(this.x, this.y)
 		switch (direction) {
 			case 'left':
 				this.x--
@@ -65,14 +64,19 @@ export class Snake{
 				break;
 		}
 
-		this.checkForClosed()
-		this.stepForward()
-		this.checkForFruit()
-		this.show()
+		this.onMoveHook()
+
 	}
 
-	stepForward(){
+	onMoveHook(){
+			
+			this.checkForClosed()
+			this.stepForward()
+			this.checkForFruit()
+			this.show()
+		}
 
+	stepForward(){
 		this.body.push([this.x, this.y])
 		const [x,y] = this.body.shift()
 		this.matrix.setCell(x, y, 'empty')
@@ -88,7 +92,7 @@ export class Snake{
 
 		}
 		this.matrix.setCell(x, y, 'fruit')
-		
+
 		return
 
 	}
