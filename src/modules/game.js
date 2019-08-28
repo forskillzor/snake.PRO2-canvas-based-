@@ -62,25 +62,25 @@ export class Game{
 				switch (event.key) {
 					case 'ArrowLeft':
 						if(self.snake.direction == 'right') break;
-						self.snake.direction = 'left'
+						self.snake.newDirection = 'left'
 						self.snake.changeMove()
 						break;
 
 					case 'ArrowRight':
 						if(self.snake.direction == 'left') break;
-						self.snake.direction = 'right'
+						self.snake.newDirection = 'right'
 						self.snake.changeMove()
 						break;
 
 					case 'ArrowUp':
 						if(self.snake.direction == 'down') break;
-						self.snake.direction = 'up'
+						self.snake.newDirection = 'up'
 						self.snake.changeMove()
 						break;
 
 					case 'ArrowDown':
 						if(self.snake.direction == 'up') break;
-						self.snake.direction = 'down'
+						self.snake.newDirection = 'down'
 						self.snake.changeMove()
 						break;
 				}

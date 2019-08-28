@@ -7,7 +7,8 @@ export class Snake{
 		this.x = x
 		this.y = y
 		this.direction = 'right'
-		this.speed = 100
+		this.newDirection = ''
+		this.speed = 80
 		this.interval = false
 		this.isClosed = false
 
@@ -36,6 +37,8 @@ export class Snake{
 	}
 
 	move(direction){
+
+		this.direction = this.newDirection
 
 		switch (direction) {
 			case 'left':
@@ -109,7 +112,7 @@ export class Snake{
 		if(this.matrix.getCell(this.x, this.y).content == 'fruit'){
 			console.log("om-nom-nom")
 			this.body.push([this.x, this.y])
-			this.speed -= 1
+			//this.speed -= 1
 			this.matrix.setCell(this.x, this.y, 'snake')
 			this.newFruit()
 		}
