@@ -2,15 +2,15 @@ export class Snake{
 
 	constructor(matrix, x, y){
 
-		this.matrix = matrix
-		this.body = []
-		this.x = x
-		this.y = y
-		this.direction = 'right'
-		this.newDirection = ''
-		this.speed = 80
-		this.interval = false
-		this.isClosed = false
+		this.matrix = matrix;
+		this.body = [];
+		this.x = x;
+		this.y = y;
+		this.direction = 'right';
+		this.newDirection = '';
+		this.speed = 80;
+		this.interval = false;
+		this.isClosed = false;
 
 		this.body.push([this.x, this.y])
 	}
@@ -28,9 +28,9 @@ export class Snake{
 
 	changeMove(){
 
-		const self = this
+		const self = this;
 		if(self)
-		clearInterval(self.interval)
+		clearInterval(self.interval);
 		self.interval = setInterval(function(){
 			self.move(self.direction)
 		}, self.speed)
@@ -38,30 +38,30 @@ export class Snake{
 
 	move(direction){
 
-		this.direction = this.newDirection
+		this.direction = this.newDirection;
 
 		switch (direction) {
 			case 'left':
-				this.x--
+				this.x--;
 				if (this.x < 0 ){
 					this.x = 39
 				}
 				break;
 			case 'right':
-				this.x++
-				if (this.x == 40){
+				this.x++;
+				if (this.x === 40){
 					this.x = 0
 				}
 				break;
 			case 'up':
-				this.y--
+				this.y--;
 				if (this.y < 0){
 					this.y = 39
 				}
 				break;
 			case 'down':
-				this.y++
-				if (this.y == 40){
+				this.y++;
+				if (this.y === 40){
 					this.y = 0
 				}
 				break;
@@ -73,47 +73,43 @@ export class Snake{
 
 	onMoveHook(){
 			
-			this.checkForClosed()
-			this.stepForward()
-			this.checkForFruit()
+			this.checkForClosed();
+			this.stepForward();
+			this.checkForFruit();
 			this.show()
 		}
 
 	stepForward(){
-		this.body.push([this.x, this.y])
-		const [x,y] = this.body.shift()
+		this.body.push([this.x, this.y]);
+		const [x,y] = this.body.shift();
 		this.matrix.setCell(x, y, 'empty')
 	}
 
 	newFruit(){
 
-		let {x,y} = generator()
+		let {x,y} = generator();
 
-		if(this.matrix.getCell(x, y).content == 'snake'){
-			console.log('SNAKE!!', this.matrix.getCell(x, y).content)
-			this.newFruit()
+		if(this.matrix.getCell(x, y).content === 'snake'){
+			console.log('SNAKE!!', this.matrix.getCell(x, y).content);
+			this.newFruit();
 
 		}
-		this.matrix.setCell(x, y, 'fruit')
-
-		return
-
+		this.matrix.setCell(x, y, 'fruit');
 	}
 
 	checkForClosed(){
 		
-		if(this.matrix.getCell(this.x, this.y).content == 'snake'){
+		if(this.matrix.getCell(this.x, this.y).content === 'snake'){
 			this.isClosed = true
 		}
 	}
 
 	checkForFruit(){
 
-		if(this.matrix.getCell(this.x, this.y).content == 'fruit'){
-			console.log("om-nom-nom")
-			this.body.push([this.x, this.y])
-			//this.speed -= 1
-			this.matrix.setCell(this.x, this.y, 'snake')
+		if(this.matrix.getCell(this.x, this.y).content === 'fruit'){
+			console.log("om-nom-nom");
+			this.body.push([this.x, this.y]);
+			this.matrix.setCell(this.x, this.y, 'snake');
 			this.newFruit()
 		}
 		this.changeMove()

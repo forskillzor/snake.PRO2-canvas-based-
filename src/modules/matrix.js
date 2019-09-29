@@ -4,9 +4,9 @@ export class Matrix{
 	
 	constructor(canvas){
 
-		this.ctx = canvas.getContext('2d')
-		this.cells = []
-		this.cellSize = 20
+		this.ctx = canvas.getContext('2d');
+		this.cells = [];
+		this.cellSize = 20;
 		this.create()
 	}
 
@@ -28,20 +28,20 @@ export class Matrix{
 
 	getCell(x, y){
 
-		let num = this._calcNum(x, y)
+		let num = this._calcNum(x, y);
 		return this.cells[num]
 	}
 
 	clearCell(x, y){
 
-		let num = this._calcNum(x, y)
+		let num = this._calcNum(x, y);
 		this.cells[num].content = "empty"
 	}
 
 	setCell(x, y, val){
 
-		let num = this._calcNum(x, y)
-		this.cells[num].content = val
+		let num = this._calcNum(x, y);
+		this.cells[num].content = val;
 		this.cells[num].render(this.ctx)
 
 	}
@@ -53,7 +53,7 @@ export class Matrix{
 	
 	select(x,y){
 
-		this.setCell(x, y, 'snake')
+		this.setCell(x, y, 'snake');
 		this.cells[this._calcNum(x,y)].render(this.ctx)
 	}
 }
