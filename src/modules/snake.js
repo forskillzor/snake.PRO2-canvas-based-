@@ -22,10 +22,6 @@ export class Snake{
 		}
 	}
 
-	hide(){
-
-	} 
-
 	changeMove(){
 
 		const self = this;
