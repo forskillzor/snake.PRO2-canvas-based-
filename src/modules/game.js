@@ -2,9 +2,7 @@ import {Snake} from './snake.js'
 import {Matrix} from './matrix.js'
 
 export class Game{
-	
 	constructor(){
-
 		const self = this;
 		this.$canvas = document.querySelector('.game');
 		this.$newButton = document.querySelector('.new-game');
@@ -14,10 +12,8 @@ export class Game{
 		this.lifes = 3;
 		this.matrix = new Matrix(this.$canvas);
 		this.matrix.render();
-		
 		this.snake = new Snake(this.matrix, 0,5);
 		this.isRunning = false;
-
 		this.$newButton.addEventListener('click', this.newGame.bind(this));
 		this.gameInterval = setInterval(function(){
 
@@ -31,7 +27,6 @@ export class Game{
 	}
 
 	gameOver(){
-
 		clearInterval(this.snake.interval);
 		this.isRunning = false;
 		alert('GAME OVER');
@@ -47,14 +42,10 @@ export class Game{
 		this.matrix.render();
 	}
 
-	_crash(){
-
-	}
-
 	KeyboardHandler(){
 
 		const self = this;
-	
+
 		window.addEventListener('keydown', function(event){
             event.preventDefault();
 			if(self.isRunning){

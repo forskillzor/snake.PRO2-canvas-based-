@@ -6,7 +6,7 @@ export class App{
 		this.$app = document.querySelector('.app');
 		this.$record = document.querySelector('.score');
 		this.game = new Game();
-		//this.$record.textContent = 'Рекордов нет'
+		this.$record.textContent = 'Рекордов нет'
 	}
-}	
+}
 
