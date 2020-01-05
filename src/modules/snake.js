@@ -9,7 +9,6 @@ export class Snake{
 		this.y = y;
 		this.direction = 'right';
 		this.speed = 80;
-		this.interval = false;
 		this.isClosed = false;
 		this.body.push([this.x, this.y]);
 		this.reverses = {
@@ -18,9 +17,9 @@ export class Snake{
 			'left': 'right',
 			'right': 'left'
 		};
-		this.interval = setInterval(() => {
-			this.move(this.direction)
-		}, this.speed);
+		// this.interval = setInterval(() => {
+		// 	this.move(this.direction)
+		// }, this.speed);
 	}
 	render(){
 		for (let i = 0; i < this.body.length; i++){

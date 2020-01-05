@@ -27,11 +27,9 @@ body{
 	border-radius: 10px;
 }
 .game{
-	padding: none;
-	margin: none;
-
-	overflow: hidden;
-	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+    overflow: visible;
 }
 .title{
 	font-weight: 700;
@@ -52,6 +50,9 @@ body{
 	background-color: green;
 }
 .game-wrapper{
+    display: flex;
+	justify-content: center;
+	align-items: center;
 	position: relative;
 	box-sizing: border-box;
 
@@ -64,8 +65,7 @@ body{
 }
 .new-game{
 	position: absolute;
-	top: 350px;
-	left:300px;
+    margin: auto auto;
 
 	padding: 20px 20px;
 

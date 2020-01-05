@@ -1,5 +1,8 @@
-import {colors} from './game.config'
+import {colors, game_settings} from './game.config'
+
 const canvas = document.querySelector('.game');
+canvas.width = game_settings.area_width * game_settings.cell_width;
+canvas.height = game_settings.area_height * game_settings.cell_height;
 export const ctx = canvas.getContext('2d');
 
 export class Cell{

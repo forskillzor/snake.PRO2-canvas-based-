@@ -11,17 +11,23 @@ export class Game{
 		this.snake = null;
 		this.isRunning = false;
 		this.KeyboardHandler();
+		this.gameInterval = null;
+	}
+	start(){
 		this.gameInterval = setInterval(() => {
 			if (this.snake.isClosed && this.isRunning){
 				this.gameOver()
 			}
-			// self.$score.textContent = self.snake.body.length-1
-		},10);
-
+			this.snake.move(this.snake.direction);
+		},this.snake.speed);
+	}
+	stop(){
+		clearInterval(this.gameInterval);
 	}
 
 	gameOver(){
-		clearInterval(this.snake.interval);
+		this.stop();
+		delete this.snake;
 		this.isRunning = false;
 		alert('GAME OVER');
 		this.$newButton.classList.remove('hide')
@@ -34,6 +40,7 @@ export class Game{
 		this.snake.newFruit();
 		this.$newButton.classList.add('hide');
 		this.matrix.show();
+		this.start();
 	}
 
 	KeyboardHandler(){
