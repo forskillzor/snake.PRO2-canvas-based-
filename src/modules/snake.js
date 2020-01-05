@@ -1,41 +1,41 @@
+import {keybindings} from './game.config'
+
 export class Snake{
-
 	constructor(matrix, x, y){
-
 		this.matrix = matrix;
 		this.body = [];
 		this.x = x;
 		this.y = y;
 		this.direction = 'right';
-		this.newDirection = '';
 		this.speed = 80;
 		this.interval = false;
 		this.isClosed = false;
-
-		this.body.push([this.x, this.y])
+		this.body.push([this.x, this.y]);
+		this.reverses = {
+			'up': 'down',
+			'down': 'up',
+			'left': 'right',
+			'right': 'left'
+		};
+		this.interval = setInterval(() => {
+			this.move(this.direction)
+		}, this.speed);
 	}
-
-	show(){
-
+	render(){
 		for (let i = 0; i < this.body.length; i++){
 			this.matrix.setCell(this.body[i][0], this.body[i][1], 'snake')
 		}
 	}
-
-	changeMove(){
-
-		const self = this;
-		if(self)
-		clearInterval(self.interval);
-		self.interval = setInterval(function(){
-			self.move(self.direction)
-		}, self.speed)
+	setDirection(key){
+		if (this.direction !== this.reverses[keybindings[key]]
+			&& keybindings[key])
+			this.direction = keybindings[key];
 	}
-
+	outArea(){
+		if (this.x < 0)
+			return true;
+	}
 	move(direction){
-
-		this.direction = this.newDirection;
-
 		switch (direction) {
 			case 'left':
 				this.x--;
@@ -62,56 +62,44 @@ export class Snake{
 				}
 				break;
 		}
-
-		this.onMoveHook()
-
+		this.onMoveHook();
 	}
-
 	onMoveHook(){
-			
 			this.checkForClosed();
 			this.stepForward();
 			this.checkForFruit();
-			this.show()
+			this.render()
 		}
-
 	stepForward(){
-		this.body.push([this.x, this.y]);
-		const [x,y] = this.body.shift();
+		this.body.unshift([this.x, this.y]);
+		const [x,y] = this.body.pop();
 		this.matrix.setCell(x, y, 'empty')
 	}
-
 	newFruit(){
-
 		let {x,y} = generator();
-
 		if(this.matrix.getCell(x, y).content === 'snake'){
 			console.log('SNAKE!!', this.matrix.getCell(x, y).content);
 			this.newFruit();
-
 		}
 		this.matrix.setCell(x, y, 'fruit');
 	}
-
 	checkForClosed(){
-		
 		if(this.matrix.getCell(this.x, this.y).content === 'snake'){
 			this.isClosed = true
 		}
 	}
+	checkForward(){
 
+	}
 	checkForFruit(){
-
 		if(this.matrix.getCell(this.x, this.y).content === 'fruit'){
 			console.log("om-nom-nom");
 			this.body.push([this.x, this.y]);
 			this.matrix.setCell(this.x, this.y, 'snake');
 			this.newFruit()
 		}
-		this.changeMove()
 	}
 }
-
 function generator(){
 	return {
 		x: parseInt(Math.random()*39),

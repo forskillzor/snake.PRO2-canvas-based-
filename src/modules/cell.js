@@ -1,3 +1,4 @@
+import {ctx} from './canvas'
 export class Cell{
 
 	constructor(x, y, m){
@@ -13,10 +14,11 @@ export class Cell{
 		}
 	}
 
-	render(ctx){
+	render(){
 		ctx.fillStyle = this.contentColor[this.content];
 		ctx.strokeStyle = '#d2d2d2';
 		ctx.fillRect(this.x, this.y, this.m, this.m);
 		ctx.strokeRect(this.x, this.y, this.m, this.m);
 	}
 }
+
