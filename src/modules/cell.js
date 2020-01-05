@@ -1,4 +1,6 @@
-import {ctx} from './canvas'
+const canvas = document.querySelector('.game');
+export const ctx = canvas.getContext('2d');
+
 export class Cell{
 
 	constructor(x, y, m){
