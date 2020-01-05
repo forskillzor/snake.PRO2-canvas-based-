@@ -21,7 +21,7 @@ export class Matrix{
 			}
 		}
 	}
-	render(){
+	show(){
 		for (let i = 0; i < this.cells.length; i++){
 			this.cells[i].render()
 		}
@@ -37,6 +37,6 @@ export class Matrix{
 
 	}
 	_calcNum(x, y){
-		return y*40 + x;
+		return y * game_settings.area_width + x;
 	}
 }

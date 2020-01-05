@@ -1,4 +1,5 @@
 import {keybindings} from './game.config'
+import {game_settings} from "./game.config";
 
 export class Snake{
 	constructor(matrix, x, y){
@@ -31,6 +32,7 @@ export class Snake{
 			&& keybindings[key])
 			this.direction = keybindings[key];
 	}
+	// TODO
 	outArea(){
 		if (this.x < 0)
 			return true;
@@ -40,24 +42,24 @@ export class Snake{
 			case 'left':
 				this.x--;
 				if (this.x < 0 ){
-					this.x = 39
+					this.x = game_settings.area_width - 1;
 				}
 				break;
 			case 'right':
 				this.x++;
-				if (this.x === 40){
+				if (this.x === game_settings.area_width){
 					this.x = 0
 				}
 				break;
 			case 'up':
 				this.y--;
 				if (this.y < 0){
-					this.y = 39
+					this.y = game_settings.area_height - 1;
 				}
 				break;
 			case 'down':
 				this.y++;
-				if (this.y === 40){
+				if (this.y === game_settings.area_height){
 					this.y = 0
 				}
 				break;
@@ -88,6 +90,7 @@ export class Snake{
 			this.isClosed = true
 		}
 	}
+	//TODO
 	checkForward(){
 
 	}
@@ -102,7 +105,7 @@ export class Snake{
 }
 function generator(){
 	return {
-		x: parseInt(Math.random()*39),
-		y: parseInt(Math.random()*39)
+		x: parseInt(Math.random() * (game_settings.area_width - 1)),
+		y: parseInt(Math.random() * (game_settings.area_height - 1))
 	}
 }

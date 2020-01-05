@@ -8,8 +8,6 @@ export class Game{
 		this.$newButton.addEventListener('click', this.newGame.bind(this));
 		this.score = 0;
 		this.lifes = 3;
-		this.matrix = new Matrix(this.$canvas);
-		this.matrix.render();
 		this.snake = null;
 		this.isRunning = false;
 		this.KeyboardHandler();
@@ -31,11 +29,11 @@ export class Game{
 
 	newGame(){
 		this.isRunning = true;
-		this.matrix = new Matrix(this.$canvas);
+		this.matrix = new Matrix();
 		this.snake = new Snake(this.matrix, 0,5);
 		this.snake.newFruit();
 		this.$newButton.classList.add('hide');
-		this.matrix.render();
+		this.matrix.show();
 	}
 
 	KeyboardHandler(){

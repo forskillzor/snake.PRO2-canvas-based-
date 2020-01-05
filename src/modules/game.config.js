@@ -5,8 +5,8 @@ export const keybindings = {
     'ArrowDown':    'down'
 };
 export const game_settings = {
-    area_width: 40,
-    area_height: 40,
+    area_width: 20,
+    area_height: 20,
     cell_width: 20,
     cell_height: 20,
 };
