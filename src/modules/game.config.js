@@ -4,11 +4,15 @@ export const keybindings = {
     'ArrowUp':      'up',
     'ArrowDown':    'down'
 };
-export const game_settings = {
-    area_width: 20,
-    area_height: 20,
-    cell_width: 20,
-    cell_height: 20,
+export const conf = {
+    area: {
+        width: 20,
+        height: 20,
+    },
+    cell: {
+        width: 20,
+        height: 20,
+    }
 };
 export const colors = {
     'empty' : '#fff',

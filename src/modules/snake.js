@@ -1,5 +1,5 @@
 import {keybindings} from './game.config'
-import {game_settings} from "./game.config";
+import {conf} from "./game.config";
 
 export class Snake{
 	constructor(matrix, x, y){
@@ -41,24 +41,24 @@ export class Snake{
 			case 'left':
 				this.x--;
 				if (this.x < 0 ){
-					this.x = game_settings.area_width - 1;
+					this.x = conf.area.width - 1;
 				}
 				break;
 			case 'right':
 				this.x++;
-				if (this.x === game_settings.area_width){
+				if (this.x === conf.area.width){
 					this.x = 0
 				}
 				break;
 			case 'up':
 				this.y--;
 				if (this.y < 0){
-					this.y = game_settings.area_height - 1;
+					this.y = conf.area.height - 1;
 				}
 				break;
 			case 'down':
 				this.y++;
-				if (this.y === game_settings.area_height){
+				if (this.y === conf.area.height){
 					this.y = 0
 				}
 				break;
@@ -104,7 +104,7 @@ export class Snake{
 }
 function generator(){
 	return {
-		x: parseInt(Math.random() * (game_settings.area_width - 1)),
-		y: parseInt(Math.random() * (game_settings.area_height - 1))
+		x: parseInt(Math.random() * (conf.area.width - 1)),
+		y: parseInt(Math.random() * (conf.area.height - 1))
 	}
 }

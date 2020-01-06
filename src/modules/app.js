@@ -1,5 +1,5 @@
 import {Game} from './game.js'
-import {game_settings} from "./game.config";
+import {conf} from "./game.config";
 export class App{
 
 	constructor(){
@@ -9,7 +9,7 @@ export class App{
 	}
 }
 const applySettings = (el) => {
-	el.style.width = game_settings.area_width * game_settings.cell_width + 'px';
-	el.style.height = game_settings.area_height * game_settings.cell_height + 'px';
+	el.style.width = conf.area.width * conf.cell.width + 'px';
+	el.style.height = conf.area.height * conf.cell.height + 'px';
 };
 

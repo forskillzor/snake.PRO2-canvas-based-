@@ -1,23 +1,23 @@
 import {Cell} from './cell.js'
-import {game_settings} from "./game.config";
+import {conf} from "./game.config";
 
-const cellSize = game_settings.cell_width;
-const height = game_settings.area_height;
-const width = game_settings.area_width;
+const cell_size = conf.cell.width;
+const height = conf.area.height;
+const width = conf.area.width;
 export class Matrix{
 	constructor(){
 		this.cells = [];
 		this.create()
 	}
 	create(){
-		const cell_width = game_settings.cell_width;
-		const cell_height = game_settings.cell_height;
+		const cell_width = conf.cell.width;
+		const cell_height = conf.cell.height;
 		const area_width = width * cell_width;
 		const area_height = height * cell_height;
 
 		for (let y = 0; y < area_height; y+=cell_height){
 			for(let x = 0; x < area_width; x+=cell_width){
-				this.cells.push(new Cell(x, y, cellSize, cellSize))
+				this.cells.push(new Cell(x, y, cell_size, cell_size))
 			}
 		}
 	}
@@ -37,6 +37,6 @@ export class Matrix{
 
 	}
 	_calcNum(x, y){
-		return y * game_settings.area_width + x;
+		return y * conf.area.width + x;
 	}
 }
