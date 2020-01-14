@@ -36,10 +36,11 @@ export class Game{
 	newGame(){
 		this.isRunning = true;
 		this.matrix = new Matrix();
-		this.snake = new Snake(this.matrix, 0,5);
+		this.snake = new Snake(this, this.matrix, 0,5);
 		this.snake.newFruit();
 		this.$newButton.classList.add('hide');
 		this.matrix.show();
+		this.$score.innerText = this.score;
 		this.start();
 	}
 

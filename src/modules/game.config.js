@@ -6,8 +6,8 @@ export const keybindings = {
 };
 export const conf = {
     area: {
-        width: 20,
-        height: 20,
+        width: 30,
+        height: 30,
     },
     cell: {
         width: 20,

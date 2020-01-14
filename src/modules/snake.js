@@ -2,7 +2,7 @@ import {keybindings} from './game.config'
 import {conf} from "./game.config";
 
 export class Snake{
-	constructor(matrix, x, y){
+	constructor(game, matrix, x, y){
 		this.matrix = matrix;
 		this.body = [];
 		this.x = x;
@@ -17,9 +17,6 @@ export class Snake{
 			'left': 'right',
 			'right': 'left'
 		};
-		// this.interval = setInterval(() => {
-		// 	this.move(this.direction)
-		// }, this.speed);
 	}
 	render(){
 		for (let i = 0; i < this.body.length; i++){
