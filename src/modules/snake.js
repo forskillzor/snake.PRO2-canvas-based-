@@ -3,6 +3,7 @@ import {conf} from "./game.config";
 
 export class Snake{
 	constructor(game, matrix, x, y){
+	    this.game = game;
 		this.matrix = matrix;
 		this.body = [];
 		this.x = x;
@@ -86,15 +87,12 @@ export class Snake{
 			this.isClosed = true
 		}
 	}
-	//TODO
-	checkForward(){
-
-	}
 	checkForFruit(){
 		if(this.matrix.getCell(this.x, this.y).content === 'fruit'){
 			console.log("om-nom-nom");
 			this.body.push([this.x, this.y]);
 			this.matrix.setCell(this.x, this.y, 'snake');
+			this.game.incScore();
 			this.newFruit()
 		}
 	}

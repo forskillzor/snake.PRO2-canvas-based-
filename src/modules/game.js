@@ -43,6 +43,10 @@ export class Game{
 		this.$score.innerText = this.score;
 		this.start();
 	}
+	incScore(){
+	    this.score = ++this.score;
+	    this.$score.innerText = this.score;
+	}
 
 	KeyboardHandler(){
 		const handle = (event) => {
